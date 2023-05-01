@@ -7,17 +7,17 @@ URI = f'http://{HOST}/api/v1/generate'
 # For reverse-proxied streaming, the remote will likely host with ssl - https://
 # URI = 'https://your-uri-here.trycloudflare.com/api/v1/generate'
 
-def run(context):
+def run(prompt):
     request = {
         'prompt': prompt,
-        'max_new_tokens': 250,
+        'max_new_tokens': 2000,
         'do_sample': True,
-        'temperature': 1.3,
+        'temperature': 0.7,
         'top_p': 0.1,
         'typical_p': 1,
         'repetition_penalty': 1.18,
         'top_k': 40,
-        'min_length': 0,
+        'min_length': 40,
         'no_repeat_ngram_size': 0,
         'num_beams': 1,
         'penalty_alpha': 0,
@@ -38,5 +38,7 @@ def run(context):
         print(prompt + result)
 
 if __name__ == '__main__':
-    prompt = "In order to make homemade bread, follow these steps:\n1)"
+    prompt = """You are a helpful assistant called Joi trained by OpenAssistant on large corpus of data, you will now help user to answer the question as concise as possible
+User: What is capital of Ukraine?
+Joi:"""
     run(prompt)
