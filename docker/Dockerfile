@@ -17,8 +17,8 @@ RUN . /build/venv/bin/activate && \
 # https://developer.nvidia.com/cuda-gpus
 # for a rtx 2060: ARG TORCH_CUDA_ARCH_LIST="7.5"
 ARG TORCH_CUDA_ARCH_LIST="3.5;5.0;6.0;6.1;7.0;7.5;8.0;8.6+PTX"
-RUN . /build/venv/bin/activate && \
-    python3 setup_cuda.py bdist_wheel -d .
+#RUN . /build/venv/bin/activate && \
+#    python3 setup_cuda.py bdist_wheel -d .
 
 FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 
